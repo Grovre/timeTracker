@@ -1,0 +1,7 @@
+name: TrackPlaytime
+version: '${project.version}'
+main: me.grovre.trackplaytime.TrackPlaytime
+api-version: 1.18
+authors: [ PoptartFromPluto ]
+description: Keeps track of player's playtime
+website: https://github.com/grovre
