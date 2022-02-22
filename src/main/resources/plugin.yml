@@ -5,3 +5,7 @@ api-version: 1.18
 authors: [ PoptartFromPluto ]
 description: Keeps track of player's playtime
 website: https://github.com/grovre
+commands:
+  timetop:
+    description: See top 10 players' playtime
+    usage: </command>

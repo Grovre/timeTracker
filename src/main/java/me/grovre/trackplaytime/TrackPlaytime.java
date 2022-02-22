@@ -1,5 +1,6 @@
 package me.grovre.trackplaytime;
 
+import me.grovre.trackplaytime.commands.TimetopCommand;
 import me.grovre.trackplaytime.listeners.OnPlayerJoin;
 import me.grovre.trackplaytime.listeners.OnPlayerLeave;
 import org.bukkit.Bukkit;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public final class TrackPlaytime extends JavaPlugin {
@@ -28,6 +30,8 @@ public final class TrackPlaytime extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new OnPlayerLeave(), this);
         getServer().getPluginManager().registerEvents(new OnPlayerJoin(), this);
+
+        Objects.requireNonNull(getServer().getPluginCommand("timetop")).setExecutor(new TimetopCommand());
     }
 
     @Override
@@ -42,7 +46,7 @@ public final class TrackPlaytime extends JavaPlugin {
             }
             int playerIndex = 0;
             try {
-                playerIndex = db.containsUser(p.getUniqueId());
+                playerIndex = db.getIndexOfUUID(p.getUniqueId());
             } catch (IOException e) {
                 e.printStackTrace();
             }

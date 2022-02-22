@@ -10,8 +10,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.UUID;
 
 public class OnPlayerLeave implements Listener {
 
@@ -20,7 +18,7 @@ public class OnPlayerLeave implements Listener {
         Player player = event.getPlayer();
         TrackPlaytime plugin = TrackPlaytime.getPlugin();
         dbUtil db = new dbUtil(new File(plugin.getDataFolder().getAbsolutePath() + "/PlayerTimeData.json"));
-        int playerIndex = db.containsUser(player.getUniqueId());
+        int playerIndex = db.getIndexOfUUID(player.getUniqueId());
         PlayerTimeData ptd;
         if(playerIndex == -1) {
             ptd = new PlayerTimeData(player);
